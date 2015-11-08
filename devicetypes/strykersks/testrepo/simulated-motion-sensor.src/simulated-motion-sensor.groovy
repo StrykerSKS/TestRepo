@@ -13,7 +13,7 @@
  */
 metadata {
 	// Automatically generated. Make future change here.
-	definition (name: "Simulated Motion Sensor", namespace: "StrykerSKS/TestRepo", author: "bob") {
+	definition (name: "Simulated Motion Sensor", namespace: "StrykerSKS/TestRepo", author: "Sean Kendall Schneyer") {
 		capability "Motion Sensor"
 
 		command "active"
