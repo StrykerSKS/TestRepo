@@ -8,7 +8,7 @@
 // for the UI
 metadata {
   // Automatically generated. Make future change here.
-  definition (name: "DSC Test Panel", author: "test@test.com") {
+  definition (name: "DSC Test Panel", namespace: "StrykerSKS", author: "test@test.com") {
     // Change or define capabilities here as needed
     capability "Refresh"
     capability "Polling"
