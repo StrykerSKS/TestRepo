@@ -12,7 +12,7 @@
  *
  */
 metadata {
-	definition (name: "Motion Detector", namespace: "StrykerSKS", author: "StrykerSKS") {
+	definition (name: "Motion Detector", author: "StrykerSKS") {
 		capability "Motion Sensor"
 		capability "Sensor"
 
