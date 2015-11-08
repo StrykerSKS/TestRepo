@@ -16,7 +16,7 @@ metadata {
 		capability "Motion Sensor"
 		capability "Sensor"
 
-		fingerprint profileId: "0104", deviceId: "0402", inClusters: "0000,0001,0003,0009,0500"
+	//	fingerprint profileId: "0104", deviceId: "0402", inClusters: "0000,0001,0003,0009,0500"
 	}
 
 	// simulator metadata
