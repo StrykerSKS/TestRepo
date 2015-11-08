@@ -8,7 +8,7 @@
 // for the UI
 metadata {
   // Automatically generated. Make future change here.
-  definition (name: "DSC Single Panel", namespace: "StrykerSKS", author: "bubba@linuxbox.org") {
+  definition (name: "DSC Panel", namespace: "StrykerSKS", author: "bubba@linuxbox.org") {
     // Change or define capabilities here as needed
     capability "Refresh"
     capability "Polling"
