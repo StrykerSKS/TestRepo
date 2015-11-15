@@ -26,7 +26,7 @@ preferences {
 
 metadata {
     // Automatically generated. Make future change here.
-    definition (name: "DSC Alarm Thing", author: "Matt Martz") {
+    definition (name: "Basic Direct", author: "Sean Schneyer") {
         capability "Polling"
         capability "Button"
         capability "Refresh"
@@ -102,107 +102,38 @@ def arm() {
 
 def disarm() {
     log.debug "Disarming..."
-    contactEnvisalinkJson("disarm")
+    / contactEnvisalinkJson("disarm")
 }
 
 def nightarm() {
     log.debug "Night..."
-    contactEnvisalinkJson("nightarm")
+   // contactEnvisalinkJson("nightarm")
 }
 
 def dscCommand(String state,String statemode) {
-    log.debug "DSC Command State Requested: ${state} and ${statemode}"
-
-    if ("${state}" == "ready") {
-        sendEvent(name: 'alarmStatus', value: 'ready')
-        sendEvent(name: 'alarm', value: 'Ready')
-        sendEvent(name: 'mainState', value: 'disarm')
-        sendEvent(name: 'alarmstate', value: 'disarmed')
-    }
-    if ("${state}" == "disarmed") {
-        sendEvent(name: 'alarmStatus', value: 'ready')
-        sendEvent(name: 'alarm', value: 'Ready')
-        sendEvent(name: 'mainState', value: 'disarm')
-        sendEvent(name: 'alarmstate', value: 'disarmed')
-    }
-    if ("${state}" == "notready") {
-        sendEvent(name: 'alarmStatus', value: 'notready')
-        sendEvent(name: 'alarm', value: 'Not Ready')
-        sendEvent(name: 'mainState', value: 'disarm')
-        sendEvent(name: 'alarmstate', value: 'disarmed')
-    }
-    if ("${state}" == "armed") {
-        if ("${statemode}" == "0") {
-            sendEvent(name: 'alarmStatus', value: 'away')
-            sendEvent(name: 'alarm', value: 'Away')
-            sendEvent(name: 'mainState', value: 'arm')
-        }
-        if ("${statemode}" == "1") {
-            sendEvent(name: 'alarmStatus', value: 'stay')
-            sendEvent(name: 'alarm', value: 'Stay')
-            sendEvent(name: 'mainState', value: 'arm')
-        }
-        if ("${statemode}" == "2") {
-            sendEvent(name: 'alarmStatus', value: 'zeroaway')
-            sendEvent(name: 'alarm', value: 'Zero Entry Delay (Away)')
-            sendEvent(name: 'mainState', value: 'night')
-        }
-        if ("${statemode}" == "3") {
-            sendEvent(name: 'alarmStatus', value: 'zerostay')
-            sendEvent(name: 'alarm', value: 'Zero Entry Delay (Stay)')
-            sendEvent(name: 'mainState', value: 'night')
-        }
-        sendEvent(name: 'alarmstate', value: 'armed')
-        sendEvent(name: 'alarm', value: 'Armed')
-    }
-    if ("${state}" == "alarm") {
-        sendEvent(name: 'alarmStatus', value: 'alarming')
-        sendEvent(name: 'alarm', value: 'ALARMING')
-        sendEvent(name: 'mainState', value: 'alarming')
-        sendEvent(name: 'alarmstate', value: 'disarmed')
-    }
-    if ("${state}" == "exitdelay") {
-        sendEvent(name: 'alarmStatus', value: 'exit')
-        sendEvent(name: 'alarm', value: 'Exit Delay')
-        sendEvent(name: 'mainState', value: 'arming')
-        sendEvent(name: 'alarmstate', value: 'disarmed')
-    }
-    if ("${state}" == "entrydelay") {
-        sendEvent(name: 'alarmStatus', value: 'entry')
-        sendEvent(name: 'alarm', value: 'Entry Delay')
-        sendEvent(name: 'mainState', value: 'arm')
-        sendEvent(name: 'alarmstate', value: 'armed')
-    }
-    if ("${state}" == "lockout") {
-        sendEvent(name: 'alarmStatus', value: 'lockout')
-        sendEvent(name: 'alarm', value: 'Keypad Lockout')
-    }
-    if ("${state}" == "failed") {
-        sendEvent(name: 'alarmStatus', value: 'fail')
-        sendEvent(name: 'alarm', value: 'Failed')
-    }
+   
 }
 
 
 def sendDisarm() {
     log.debug "TRYING TO DISARM"
-    disarm()
+   // disarm()
 }
 
 def poll() {
     log.debug "Executing 'poll'"
-    contactEnvisalinkJson("status")
+    // contactEnvisalinkJson("status")
 }
 
 def updatestatus() {
     log.debug "Executing 'updatestatus'"
-    contactEnvisalinkJson("status")
+    // contactEnvisalinkJson("status")
 }
 
 
 def refresh() {
     log.debug "Executing 'refresh' which is actually poll()"
-    poll()
+    // poll()
 }
 
 def contactEnvisalinkJson(String command) {
