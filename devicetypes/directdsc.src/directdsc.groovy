@@ -1,10 +1,10 @@
 /**
 *  Direct DSC
 *
-* A basic test application for direction communication with the Alarm Server on the local LAN
+*   A basic test application for direction communication with the Alarm Server on the local LAN
 *
-*  Copyright 2014 Matt Martz
-* Copyright 2015 Sean Kendall Schneyer
+*   Copyright 2014 Matt Martz
+*   Copyright 2015 Sean Kendall Schneyer
 *
 *
 *  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except
@@ -17,7 +17,6 @@
 *  for the specific language governing permissions and limitations under the License.
 *
 */
-import groovy.json.JsonBuilder
 
 preferences {
     input("hostpassword", "password", title: "Server Password:", description: "Note: this is sent in the clear (for now).  Don't use something stupid")
@@ -213,11 +212,11 @@ def contactEnvisalinkJson(String command) {
 
     log.debug "The device id configured is: $device.deviceNetworkId"
 
-    def path = "/jsoncommand"
+    def path = "/api"
 
-    def json = new JsonBuilder()
-    json.call("command":"${command}","password":"${settings.hostpassword}")
-    def message = json.toString()
+//    def json = new JsonBuilder()
+//    json.call("command":"${command}","password":"${settings.hostpassword}")
+//   def message = json.toString()
 
     def headers = [:] 
     headers.put("HOST", "$host:$port")
