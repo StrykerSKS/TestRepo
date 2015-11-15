@@ -80,7 +80,7 @@ private apiGet() {
     LOG("apiGet(${path})")
 
     def headers = [
-        HOST:       192.168.1.201:8112,
+        HOST:       '192.168.1.201:8112',
         Accept:     "*/*"
     ]
 
