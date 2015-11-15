@@ -31,12 +31,7 @@ metadata {
         capability "Button"
         capability "Refresh"
         capability "Alarm"
-        command "dscCommand"
-        command "sendDisarm"
         command "arm"
-        command "disarm"
-        command "nightarm"
-        command "updatestatus"
         attribute "partition1", "string"
         attribute "alarmStatus", "string"
         attribute "alarmstate", "string"
@@ -100,35 +95,6 @@ def arm() {
     
 }
 
-def disarm() {
-    log.debug "Disarming..."
-    / contactEnvisalinkJson("disarm")
-}
-
-def nightarm() {
-    log.debug "Night..."
-   // contactEnvisalinkJson("nightarm")
-}
-
-def dscCommand(String state,String statemode) {
-   
-}
-
-
-def sendDisarm() {
-    log.debug "TRYING TO DISARM"
-   // disarm()
-}
-
-def poll() {
-    log.debug "Executing 'poll'"
-    // contactEnvisalinkJson("status")
-}
-
-def updatestatus() {
-    log.debug "Executing 'updatestatus'"
-    // contactEnvisalinkJson("status")
-}
 
 
 def refresh() {
@@ -136,45 +102,6 @@ def refresh() {
     // poll()
 }
 
-def contactEnvisalinkJson(String command) {
-    def host = settings.hostaddress
-    def port = settings.hostport
-    def hosthex = convertIPtoHex(host)
-    def porthex = convertPortToHex(port)
-    device.deviceNetworkId = "$hosthex:$porthex" 
-
-    log.debug "The device id configured is: $device.deviceNetworkId"
-
-    def path = "/api"
-
-//    def json = new JsonBuilder()
-//    json.call("command":"${command}","password":"${settings.hostpassword}")
-//   def message = json.toString()
-
-    def headers = [:] 
-    headers.put("HOST", "$host:$port")
-    headers.put("Content-Type", "application/json")
-    headers.put("Message", message)
-
-    log.debug "The Header is $headers"
-
-    def method = "POST"
-
-    try {
-        def hubAction = new physicalgraph.device.HubAction(
-            method: method,
-            path: path,
-            body: json,
-            headers: headers,
-        )
-
-        log.debug hubAction
-        hubAction
-    }
-    catch (Exception e) {
-        log.debug "Hit Exception $e on $hubAction"
-    }
-}
 
 
 private apiGet() {
