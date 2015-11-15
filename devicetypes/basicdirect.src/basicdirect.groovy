@@ -95,7 +95,9 @@ def parse(String description) {
 
 def arm() {
     log.debug "Arming..."
-    contactEnvisalinkJson("arm")
+    // contactEnvisalinkJson("arm")
+    apiGet()
+    
 }
 
 def disarm() {
@@ -244,22 +246,23 @@ def contactEnvisalinkJson(String command) {
 }
 
 
-private apiGet(String path) {
+private apiGet() {
+    LOG("In apiGet...")
     LOG("apiGet(${path})")
 
     def headers = [
-        HOST:       state.hostAddress,
+        HOST:       192.168.1.201:8112,
         Accept:     "*/*"
     ]
 
+    LOG(headers)
+    
     def httpRequest = [
         method:     'GET',
-        path:       path,
+        path:       '/api?',
         headers:    headers
     ]
-
-    updateDNI()
-
+    LOG(httpRequest)
     return new physicalgraph.device.HubAction(httpRequest)
 }
 
@@ -294,3 +297,8 @@ private getHostAddress() {
     def port = convertHexToInt(parts[1])
     return ip + ":" + port
 }
+
+private def LOG(message) {
+    log.trace message
+}
+
