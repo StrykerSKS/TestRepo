@@ -24,6 +24,17 @@ preferences {
     }
 }
 
+
+definition(
+    name: "bonvoyage",
+    namespace: "StrykerSKS",
+    author: "Testing Only",
+    description: "Connect your Ecobee thermostat to SmartThings.",
+    category: "My Apps",
+    iconUrl: "https://s3.amazonaws.com/smartapp-icons/Partner/ecobee.png",
+    iconX2Url: "https://s3.amazonaws.com/smartapp-icons/Partner/ecobee@2x.png"
+)
+
 def installed() {
     log.debug "Installed with settings: ${settings}"
     log.debug "Current mode = ${location.mode}, people = ${people.collect{it.label + ': ' + it.currentPresence}}"
