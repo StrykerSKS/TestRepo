@@ -36,7 +36,7 @@ preferences {
 }
 metadata {
 	// Automatically generated. Make future change here.
-	definition(name: "My Ecobee Device", author: "Yves Racine",  namespace: "yracine") {
+	definition(name: "My Ecobee Device", author: "Yves Racine",  namespace: "StrykerSKS") {
 		capability "Thermostat"
 		capability "Relative Humidity Measurement"
 		capability "Temperature Measurement"
